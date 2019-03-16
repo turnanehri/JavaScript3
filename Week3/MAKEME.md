@@ -7,180 +7,124 @@ Topics discussed this week:
 • call, apply, bind
 ```
 
-## Step 1: Give feedback
+## Step 1: Fix requested changes
 
 _Deadline Monday_
 
-Give feedback on Step 3 of last weeks homework. Please provide the feedback in an issue.
+- Fix Requested Changes (if any) on the Pull Request.
 
-## Step 2: Issues
+## Step 2
 
-_Deadline Monday_
+**_Deadline Thursday_**
 
-- Solve all your Git issues. DO NO CLOSE AN ISSUE WITHOUT AN EXPLANATION OR CODE COMMIT REFERENCING THAT ISSUE.
+### 2.1 Preparation
 
-## Step 3: Fix issues
-
-_Deadline Wednesday_
-
-- Fix the issues from the last weeks and make sure you explain how you fixed the issue in a comment (or commit message)
-
-## Step 4
-
-_Deadline Thursday_
-
-- Sort the list the repositories in the `<select>` by name (case-insensitive).
-- Refactor your app to replace `.then()` and `.catch()` with `async`/`await` and `try...catch`.
-
-Read:
+**Read the fundamental pages on:**
 
 - [try...catch](../../../../fundamentals/blob/master/fundamentals/try_catch.md)
 - [async/await](../../../../fundamentals/blob/master/fundamentals/async_await.md)
 
-## Step 5: OOP and ES6 classes
+The homework for week 3 will build on the work you did in week 2. You will create a new branch based on the `week2` branch.
 
-- If you need to refresh your memory on es6 classes: [es6-classes-in-depth](https://ponyfoo.com/articles/es6-classes-in-depth)
+1. Make sure that you committed all changes in the week 2 version of your homework.
+2. Create a new `week3` branch:
 
-_Deadline Saturday_
+   ```
+   git checkout -b week3
+   ```
 
-Refactor your GitHub app to use OOP with ES6 classes (see skeleton code below). We will be introducing a `Repository` and a `Contributor` class that will each be responsible for rendering their own data. A third `View` class will contain all remaining code.
+### 2.2 Assignment
 
-Read:
+This week you will work with all JavaScript files in the `src` folder. The assignment consists of two parts:
 
-- [Object Oriented Programming and ES6 Classes](../../../../fundamentals/blob/master/fundamentals/oop_classes.md)
-- [The `this` keyword](../../../../fundamentals/blob/master/fundamentals/this.md)
+1. Refactor all `.then()` and `.catch()` methods with `async`/`await` and `try...catch`.
+2. Make your app ARIA-compliant (see below).
+3. Refactor your application to use ES6 classes.
 
-Instructions:
+#### 2.2.1 async/await
 
-1. You should refactor your code to use three classes, named `Repository`, `Contributor` and `View`.
-2. Move your existing code that deals with rendering the repository information to the `render()` method of the `Repository` class.
-3. Move your existing code that deals with rendering the information for a single contributor to the `render()` method of the `Contributor` class.
-4. Move your existing code responsible for initializing your application to the `constructor` of the `View` class.
-5. The bulk of your remaining code should probably go to the `fetchAndRender()` method of the `View` class.
+**Instructions:**
 
-### Suggested skeleton
+1. Refactor all `.then()` and `.catch()` methods with `async`/`await` and `try...catch`.
 
-You could use this skeleton as overall design for your code in `app.js`:
+2. Make sure that your error handling code still works. See the week2 MAKEME on how to force an error response from GitHub.
 
-```js
-'use strict';
-{
-  const hyfUrl = 'https://api.github.com';
-  const hyfReposUrl = hyfUrl + '/orgs/HackYourFuture/repos?per_page=100';
+#### 2.2.2 ES6 Classes
 
-  class Repository {
-    constructor(data) {
-      this._data = data;
-    }
+**_Deadline Saturday_**
 
-    /**
-     * Render the repository info to the DOM.
-     * @param {HTML element} parent The parent element in which to render the repository.
-     * info.
-     */
-    render(parent) {
-      // Add your code here.
-      // This method should render the repository data stored in the '_data' property
-      // as HTML elements and append them to the `parent` element.
-    }
+This final assignment requires you to go the extra mile and master Object Oriented Programming and ES6 classes.
 
-    /**
-     * Returns an array of contributors as a promise
-    */
-    fetchContributors() {
-      // Add your code here
-    }
-  }
+In this assignment you need to redistribute and adapt the code from `index.js` to the files `App.js`, `Repository.js` and `Contributor.js`. You do not need to modify `Util.js`.
 
-  class Contributor {
-    constructor(data) {
-      this._data = data;
-    }
+| File             | Description                                                                                                                                                                                                        |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `index2.html`    | You should load this HTML file in your browser instead of `index.html` to work with the classes version of your homework. It loads the following JavaScript files through `<script>` tags in the `<body>` element: |
+| `App.js`         | The `App` class contains the start-up code and manages the overall orchestration of the app.                                                                                                                       |
+| `Repository.js`  | The `Repository` class holds code and data for a single repository.                                                                                                                                                |
+| `Contributor.js` | The `Contributor` class holds code and data for a single contributor.                                                                                                                                              |
+| `Util.js`        | The `Util` class contains static helper methods for use in the other classes.                                                                                                                                      |
 
-    /**
-     * Render the contributor info to the DOM.
-     * @param {HTML element} parent The parent element in which to render the contributor.
-     * info.
-     */
-    render(parent) {
-      // Add your code here.
-      // This method should render the contributor data stored in the 'data' property
-      // as HTML elements and append them to the `parent` element.
-    }
-  }
+The `App.js`, `Repository.js` and `Contributor.js` files each contain skeleton code that you can use to migrate portions of your code from `index.js` to.
 
-  class View {
-    constructor() {
-      this.initialize();
-    }
+_Read:_
 
-    /**
-     * View initialization
-     */
-    async initialize() {
-      // Add code here to initialize your app
-      // 1. Create the fixed HTML elements of your page
-      // 2. Make an initial XMLHttpRequest to populate your <select> element
-    }
+- HYF fundamental: [ES6 Classes](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/oop_classes.md#es6-classes)
+- More on ES6 classes: [ES6 Classes in Depth](https://ponyfoo.com/articles/es6-classes-in-depth)
 
-    /**
-     * Fetch information for the selected repository and render the
-     * information as HTML elements in the DOM
-     * @param {*} repoName The name of the selected repository
-     */
-    async fetchAndRender(repoName) {
-      const leftDiv = ...;
-      const rightDiv = ...;
+#### 2.2.3 ARIA-compliance (BONUS)
 
-      // ...
+Please review the material from the HTML/CSS module: [Get familiar with Accessible Rich Internet Applications (ARIA)](https://github.com/HackYourFuture/HTML-CSS/tree/master/Week1#get-familiar-with-accessible-rich-internet-applications-aria).
 
-      try {
-        const contributors = await repo.fetchContributors();
-        repo.render(leftDiv);
-        contributors
-          .map(contributor => new Contributor(contributor))
-          .forEach(contributor => contributor.render(contributorList));
-      }
-      catch (error) {
-        createAndAppend('div', container, { html: error.message, class: 'alert alert-error' });
-      }
-    }
+For the GitHub application ARIA-compliance means that the Contributors list should either be a native HTML list (i.e. using `ul` and `li` elements) or otherwise marked with an appropriate ARIA **role**. Furthermore, a user should be able to navigate through all interactive elements using the keyboard (e.g., using the **Tab** key). Pressing **Enter** on such an element should be equivalent to clicking the mouse.
 
-    /**
-     * Fetch API data as JSON data in a promise
-     * @param {string} url The URL of the API endpoint.
-     * @returns A promise.
-     */
-    fetchJSON(url) {
-      // Add your code here
-    }
-  }
+#### 2.2.4 Handing in your homework
 
-  window.onload = () => new View();
-}
+If necessary, review the instructions how to [Hand in homework](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/homework_pr.md) using GitHub pull request.
+
+To test whether your code will be accepted when you submit your homework as a pull request you need to ensure that it does not contain ESLinr errors. Open a terminal window in VSCode and type the following command:
+
+```
+npm test
 ```
 
-Note:
+If any errors or warnings are reported by this command you need to fix them before submitting a pull request.
 
-1. Please remove all redundant, commented-out code and console.log's from your files before pushing your homework as finished. There is no need for your mentors to review this stuff.
-2. Please make sure your code is well-formatted and follows the recommended naming conventions.
-## Step 6: Read before next lecture
+In addition, check for the following:
+
+- Have you removed all commented out code (should never be present in a PR)?
+- Do the variable, function and argument names you created follow the [Naming Conventions](../../../../fundamentals/blob/master/fundamentals/naming_conventions.md)?
+- Is your code well-formatted (see [Code Formatting](../../../../fundamentals/blob/master/fundamentals/code_formatting.md))?
+
+If the answer is 'yes' to the preceding questions you are ready to follow these instructions:
+
+1. Push your `week3` branch to GitHub:
+
+   ```
+   git push -u origin week3
+   ```
+
+2. Create a pull request for your `week3` branch.
+
+## Step 3: Read before next lecture
 
 _Deadline Sunday morning_
 
 Go trough the reading material in the [README.md](https://github.com/HackYourFuture/Node.js) of the Node repository to prepare for your next class.
 
-## _BONUS_ : Code Kata Race
+## Alternative _BONUS_ : Code Kata Race
 
 If you haven't already join our clan: "Hack Your Future" in codewars
 
 Solve the following problems:
+
 - [Problem 1](https://www.codewars.com/kata/keep-up-the-hoop)
 - [Problem 2](https://www.codewars.com/kata/find-the-first-non-consecutive-number)
 - [Problem 3](https://www.codewars.com/kata/negation-of-a-value)
 - Some more [Homework](https://www.codewars.com/collections/hyf-homework-1)
 
 _Hints_
+
 - Hint for Q1: split your code into two parts, one part for the case that one of the two strings has an extra letter at the start or the end but is otherwise identical & one part for the case that the strings are the same length but one character is different in one of the strings
 - Also for Q1 this function on strings might be useful: [JavaScript String slice() method](https://www.w3schools.com/jsref/jsref_slice_string.asp)
 - Also potentially useful: [JavaScript String charAt() Method](https://www.w3schools.com/jsref/jsref_charat.asp)
