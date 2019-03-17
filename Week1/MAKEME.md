@@ -1,18 +1,12 @@
 # Homework Week 1
 
-> **Topics that were discussed this week:**
-> - Static websites, dynamic server-rendered webapplications, single page applications (SPA's)
-> - API's, requests
-> - Promises: creation, resolving, subscribing ('then')
-> - Basic fetch, retrieving response & JSON data
-
 ## Building our first real web application
 
 Yes! We're finally going to build our first actual Single Page Application (after completing this week's homework, you can pretty much call yourself a front-end web developer :nerd_face:!). We'll start with the basics, and add more fancy stuff and rewrite parts as we learn more in the coming weeks.
 
 Because we're actually going to build an entire application, this week's homework is more extensive and challenging than previous homework. **Please read the instructions below carefully and follow them with great attention to detail**. This is also an important part of being a developer!
 
-### The application
+## The application: GitHub HYF Repo Browser
 
 Over the coming weeks, we are going to write an application that uses the [GitHub API](https://developer.github.com/guides/getting-started/).
 
@@ -35,8 +29,6 @@ A live version of this application can be found here: http://hyf-github.netlify.
 
 Aside from the GitHub front-end that we all use, GitHub also exposes its content through an API, which any application can freely use. Let's have a look at it.
 
-### Get a list of HYF repositories
-
 You can fetch a list of HYF repositories through this API endpoint ([What is an API Endpoint?](https://teamtreehouse.com/community/what-is-an-api-endpoint)):
 
 ```
@@ -45,46 +37,58 @@ https://api.github.com/orgs/HackYourFuture/repos?per_page=100
 
 > Note the `?per_page=100` at the end of the above URL. That's a [query string](https://en.wikipedia.org/wiki/Query_string). In short, it *passes additional information to its request to the API*, through its url, rather than the request body. This particular query string tells the API we want to see `100` results `per_page`. The GitHub API [understands this](https://developer.github.com/v3/guides/traversing-with-pagination/#changing-the-number-of-items-received). We'll see query strings in more detail when we talk about REST later on in the course.
 
-If you open this URL in the browser (_try it!_) you will receive JSON data about the available HYF repositories. Don't be overwhelmed - it's a lot, and you won't need 99% of it! The interesting properties are for instance `name`, `full_name`, `description` etc. There are also many properties that contain URLs that can be used to obtain detailed information about certain aspects of the repository - for now we can ignore 99% of this data.
+If you open this URL in the browser you will receive JSON data about the available HYF repositories. Try it now! You'll just see the JSON returned as text. That's a bit difficult to digest, isn't it? If you open the Developer Console (F12) though, and go to the 'Network' tab and hit refresh (F5), you'll get a neatly structured representation where you can 'browse' the result.
 
-#### 1.2.2 Get contributor information for a repository
+![Devtools GitHub API repositories result](./assets/api_result_devtools.png)
 
-The JSON data that is returned from the initial request to get repository information includes a property named `contributors_url`. Use the value of this property to fetch a list of contributors.
+<small>Figure 2. The result of the call to fetch the HYF repositories in Chrome's DevTools.</small>
 
-#### 1.2.3 GitHub API documentation
+Still, this is lot of data, but don't be overwhelmed: you won't need 99% of it for this homework. The interesting properties are for instance `name`, `full_name` and `description`. There are also many properties that contain URLs, which can be used to navigate to detailed information about certain aspects of the repository. Go ahead and play around with them! One of these url's that you'll be using in this application, next week, is `contributors_url`: you can use the value of this property to fetch a list of contributors.
 
-You can find detailed information about the GitHub API by means of the link listed below. However, the documentation is very extensive and not easy to digest. For this homework it is not necessary to study the GitHub API documentation. We provide the link here for completeness.
+> As with most public API's, GitHub's API is very well and extensively documented. You can literally learn everything about it from just reading their documentation. However, API documentation can be daunting. For this homework it is not necessary to study the GitHub API documentation.
 
-> GitHub API documentation: https://developer.github.com/v3/
+## Coding Style
 
-### 1.3 Coding Style
+Writing code is easy - writing [*clean code*](https://github.com/ryanmcdermott/clean-code-javascript) is hard. Books have been written about it. [Literally](https://www.bol.com/nl/f/clean/9200000033313462/?country=BE). Always remember that code is written once, but read dozens of times, including by you. Spare your future self a headache!
 
-In this homework we will be introducing a preferred coding style and supporting tools to help you write _"clean code"_. A number of popular [_JavaScript Style Guides_](https://codeburst.io/5-javascript-style-guides-including-airbnb-github-google-88cbc6b2b7aa) have recently emerged of which the one developed by [Airbnb](https://github.com/airbnb/javascript) has been chosen for this homework and is recommended for subsequent use during the HYF curriculum. It is documented here:
+Clean code consists of proper naming, but also of more general 'styling'.
 
-- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+There are many ways we can 'style' our code - and there's an equal amount of [style guides](https://codeburst.io/5-javascript-style-guides-including-airbnb-github-google-88cbc6b2b7aa). Certain aspects are certainly debatable, however, over the years, there has been quite some consensus about many things. In the JavaScript world, the most widely used style guide - which you'll find used in many public repositories on GitHub and which you'll encounter in many companies - is the one from the Airbnb team (it has 82000 stars, making it one of GitHub's most popular repo's ever). That's the one we'll also be using during the course of HYF.
 
-While you do not need to read this guide in detail, it is recommended that you review sections 1-8, 12-13, 15-21 and 23. The tools installed during the project preparation step below will help you to implement these guidelines in your code. You will see error and warning messages in the VSCode editor when your code deviates from the recommended style. An additional check will be done when you submit your homework as a pull request on GitHub.
+Here it is: the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
-### 1.5 Preparation
+While you do not need to read this guide in detail, it is recommended that you review sections 1-8, 12-13, 15-21 and 23.
+
+Luckily, however, we can set-up any modern editor, including (especially) VS Code (:heart_eyes:), to help us follow these rules, highlighting warnings and errors. We'll run through how to set that up later in this guide. An additional check will be done when you submit your homework as a pull request on GitHub.
+
+## Homework schedule
 
 You will be working on the same application during the next three weeks. For each week you will need to create a new Git branch, as listed in the Table 1 below.
 
-| Week | Branch  | Assignment                                                                                                                       |
-| :--: | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
-|  1   | `week1` | - Create a basic application using callbacks to handle network requests.                                                         |
-|  2   | `week2` | Based on the `week1` branch:<br>- Refactor the callbacks to promises.<br>- Make the UI responsive.                               |
-|  3   | `week3` | Based on the `week2` branch:<br>- Refactor the application to use ES6 Classes and async/await.<br>- Make the app ARIA-compliant. |
+| Week | Branch  | Assignment |
+| ---- | ------- | ---------- |
+|  1   | `week1` | - By Wednesday: Fetch the HYF repositories and log their display names to the console.<br/>- By Sunday: Populate a `<select>` list with the repository names; allow the user to pick one, and display some of its details, like in the example. |
+|  2   | `week2` | Based on the `week1` branch:<br>- When a repository is selected, also load the contributors. Display a loading indicator while loading.<br>- Style the UI, and make it responsive.|
+|  3   | `week3` | Based on the `week2` branch:<br>- Refactor the application to use ES6 Classes and async/await.<br>- Make the app ARIA-compliant.<br />- Marvel at your first application. |
 
 <small>Table 1. Homework schedule</small>
 
-**Instructions**
+# Instructions
 
-1. Fork the JavaScript3 repository (_this repository_) to your own GitHub account.
+## Part 1 (by Wednesday): set-up & calling the API
+
+1. Fork our class' fork of the JavaScript3 repository to your own GitHub account. Yes, you'll be creating a fork of a fork of a fork:
+
+   ```
+   - Main HYF Javascript 3 repository: https://github.com/HackYourFuture/JavaScript3
+     - Belgium HYF fork: https://github.com/HackYourFutureBelgium/JavaScript3
+       - Our classes (Rob's) fork: https://github.com/segersrobbert/JavaScript3
+         - Your fork here.
+   ```
+
 2. Clone the fork to your laptop.
 3. Open the newly created `JavaScript3` folder from the cloned repository in VSCode.
-4. Install the following extension in VSCode:
-
-   **Prettier - Code formatter**.
+4. Install the following extension in VSCode: [**ESLint**](https://eslint.org/) and [**EditorConfig for VS Code**](https://editorconfig.org/). Please learn what these are about!
 
 5. Open a Terminal window in VSCode and type the following command to install Prettier and ESLint tools as required for the homework:
 
