@@ -2,7 +2,7 @@
 
 ## Building our first real web application
 
-Yes! We're finally going to build our first actual Single Page Application (after completing this week's homework, you can pretty much call yourself a front-end web developer :nerd_face:!). We'll start with the basics, and add more fancy stuff and rewrite parts as we learn more in the coming weeks.
+Yes! We're finally going to build our first actual Single Page Application (after completing this week's homework, you're officially a front-end web developer :nerd_face:). We'll start with the basics, and add more fancy stuff and rewrite parts as we learn more in the coming weeks.
 
 Because we're actually going to build an entire application, this week's homework is more extensive and challenging than previous homework. **Please read the instructions below carefully and follow them with great attention to detail**. This is also an important part of being a developer!
 
@@ -21,8 +21,6 @@ Figure 1 below shows an example of what your application could look like. Note t
 
 ![UI Example](./assets/hyf-github.png)
 
-<small>Figure 1. Example User Interface using [Material Design](https://material.io/guidelines/) principles.</small>
-
 A live version of this application can be found here: http://hyf-github.netlify.com/
 
 ## The GitHub API
@@ -40,8 +38,6 @@ https://api.github.com/orgs/HackYourFuture/repos?per_page=100
 If you open this URL in the browser you will receive JSON data about the available HYF repositories. Try it now! You'll just see the JSON returned as text. That's a bit difficult to digest, isn't it? If you open the Developer Console (F12) though, and go to the 'Network' tab and hit refresh (F5), you'll get a neatly structured representation where you can 'browse' the result.
 
 ![Devtools GitHub API repositories result](./assets/api_result_devtools.png)
-
-<small>Figure 2. The result of the call to fetch the HYF repositories in Chrome's DevTools.</small>
 
 Still, this is lot of data, but don't be overwhelmed: you won't need 99% of it for this homework. The interesting properties are for instance `name`, `full_name` and `description`. There are also many properties that contain URLs, which can be used to navigate to detailed information about certain aspects of the repository. Go ahead and play around with them! One of these url's that you'll be using in this application, next week, is `contributors_url`: you can use the value of this property to fetch a list of contributors.
 
@@ -67,11 +63,9 @@ You will be working on the same application during the next three weeks. For eac
 
 | Week | Branch  | Assignment |
 | ---- | ------- | ---------- |
-|  1   | `week1` | - By Wednesday: Fetch the HYF repositories and log their display names to the console.<br/>- By Sunday: Populate a `<select>` list with the repository names; allow the user to pick one, and display some of its details, like in the example. |
+|  1   | `week1` | - By Wednesday: Fetch the HYF repositories and log their display names to the console.<br/>- By Friday: Populate a `<select>` list with the repository names; allow the user to pick one, and display some of its details, like in the example. |
 |  2   | `week2` | Based on the `week1` branch:<br>- When a repository is selected, also load the contributors. Display a loading indicator while loading.<br>- Style the UI, and make it responsive.|
 |  3   | `week3` | Based on the `week2` branch:<br>- Refactor the application to use ES6 Classes and async/await.<br>- Make the app ARIA-compliant.<br />- Marvel at your first application. |
-
-<small>Table 1. Homework schedule</small>
 
 # Instructions
 
@@ -104,7 +98,7 @@ You will be working on the same application during the next three weeks. For eac
    ```
 
 ## Part 2 - <small>Call the API</small>
-**Deadline: Wednesday**
+**Deadline: Wednesday evening**
 
 You'll create your application inside the `homework` folder. It already has 3 basic, but completely empty files ready: an html, a css and an index file.
 
@@ -120,6 +114,11 @@ You'll create your application inside the `homework` folder. It already has 3 ba
 - [ ] Log the names of the returned repositories to the console; one next to the other.
 
   > *Hint*: map.
+
+## Part 3 - <small>Select list, repo details</small>
+**Deadline: Friday evening**
+
+
 
 ### 1.7 Handing in your homework
 
