@@ -130,6 +130,8 @@ You'll create your application inside the `homework` subfolder of the main `Java
   > - How will you find the selected repository in the complete array? Hints: option value, filter
   > - How to convert a [ISO 8601](https://nl.wikipedia.org/wiki/ISO_8601) date string into a JavaScript `Date` (we haven't seen this yet, so Google!), and then format it as a human-readable *locale date string* and *locale time string*?
 
+  > We know: creating HTML and modifying the DOM 'manually' is tedious and cumbersome. Later on in your HYF journey, in the [React module](https://github.com/HackYourFuture/React), you'll be modifying the DOM in a much easier and more fun way!
+
 # Handing in your homework
 
 If necessary, review the instructions how to [Hand in homework](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/homework_pr.md) using GitHub pull request.
