@@ -77,7 +77,7 @@ You will be working on the same application during the next three weeks. For eac
    ```
    - Main HYF Javascript 3 repository: https://github.com/HackYourFuture/JavaScript3
      - Belgium HYF fork: https://github.com/HackYourFutureBelgium/JavaScript3
-       - Our classes (Rob's) fork: https://github.com/segersrobbert/JavaScript3
+       - Our class' (Rob's) fork: https://github.com/segersrobbert/JavaScript3
          - Your fork here.
    ```
 
@@ -118,13 +118,24 @@ You'll create your application inside the `homework` folder. It already has 3 ba
 ## Part 3 - <small>Select list, repo details</small>
 **Deadline: Friday evening**
 
+- [ ] As in the example, in your application's header, create and populate a `<select>` list with all the repository's names.
+
+  > *Hint*: map again.
+
+- [ ] When the user selects a repository, display its details, nicely formatted. Display at least its name, a description, its number of forks, and when it was last updated, nicely formatted. Bonus points for nice icons. Even more bonus points for a conditional, dynamic nice icon for one of its properties, like `has_wiki`. Or be even more creative. Everything's possible.
+
+  > *Hints*:
+  > - How do you handle a user selecting a value in the `<select>` list?
+  > - In what *scope* will you have to declare the result of the call, so that you can access it later on?
+  > - How will you find the selected repository in the complete array? Hints: option value, filter
+  > - How to convert a [ISO 8601](https://nl.wikipedia.org/wiki/ISO_8601) date string into a JavaScript `Date` (we haven't seen this yet, so Google!), and then format it as a human-readable *locale date string* and *locale time string*?
 
 
-### 1.7 Handing in your homework
+# Handing in your homework
 
 If necessary, review the instructions how to [Hand in homework](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/homework_pr.md) using GitHub pull request.
 
-To test whether your code will be accepted when you submit your homework as a pull request you need to ensure that it does not contain ESLinr errors. Open a terminal window in VSCode and type the following command:
+To test whether your code will be accepted when you submit your homework as a pull request you need to ensure that it does not contain ESLint errors. Open a terminal window in VS Code (or elsewhere) in the main JavaScript3 directory and type the following command:
 
 ```
 npm test
@@ -146,16 +157,4 @@ If the answer is 'yes' to the preceding questions you are ready to follow these 
    git push -u origin week1
    ```
 
-2. Create a pull request for your `week1` branch.
-
----
-
-_BONUS_ : Code Kata Race
-
-- [Codewars](https://www.codewars.com/collections/hyf-homework-number-2)
-
-## Step 2: Read before next lecture
-
-_Deadline Sunday morning_
-
-Go through the reading material in the [README.md](/Week2/README.md) to prepare for your next class.
+2. Create a pull request for your `week1` branch against our class' (Rob's) fork.
