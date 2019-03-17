@@ -1,23 +1,20 @@
 # Homework Week 1
 
-```
-Topics discussed this week:
-• Structure for a basic SPA
-• XMLHttpRequests
-• API calls
-```
+> **Topics that were discussed this week:**
+> - Static websites, dynamic server-rendered webapplications, single page applications (SPA's)
+> - API's, requests
+> - Promises: creation, resolving, subscribing ('then')
+> - Basic fetch, retrieving response & JSON data
 
-## Step 1: Single Page Application :sweat_drops:
+## Building our first real web application
 
-**_Deadline Thursday_**
+Yes! We're finally going to build our first actual Single Page Application (after completing this week's homework, you can pretty much call yourself a front-end web developer :nerd_face:!). We'll start with the basics, and add more fancy stuff and rewrite parts as we learn more in the coming weeks.
 
-_This homework is more extensive and challenging than previous homework! Please read the instructions below carefully and follow them with great attention to detail. Start this homework as soon as you can and allow time for discussion and questions (slack!)._
+Because we're actually going to build an entire application, this week's homework is more extensive and challenging than previous homework. **Please read the instructions below carefully and follow them with great attention to detail**. This is also an important part of being a developer!
 
-### 1.1 Introduction
+### The application
 
-> In this assignment you will built upon some existing code that is already pre-written by your teachers. Your homework consist of writing the code to make the application work as requested per week.
-
-You are going to write a _Single Page Application_ (SPA) that uses the [GitHub API](https://developer.github.com/guides/getting-started/).
+Over the coming weeks, we are going to write an application that uses the [GitHub API](https://developer.github.com/guides/getting-started/).
 
 This application should display information about the available [HYF GitHub repositories](https://github.com/hackyourfuture). The functionalities we would like to see in your application are as follows:
 
@@ -34,9 +31,11 @@ Figure 1 below shows an example of what your application could look like. Note t
 
 A live version of this application can be found here: http://hyf-github.netlify.com/
 
-### 1.2 The GitHub API
+## The GitHub API
 
-#### 1.2.1 Get a list of HYF repositories
+Aside from the GitHub front-end that we all use, GitHub also exposes its content through an API, which any application can freely use. Let's have a look at it.
+
+### Get a list of HYF repositories
 
 You can fetch a list of HYF repositories through this API endpoint ([What is an API Endpoint?](https://teamtreehouse.com/community/what-is-an-api-endpoint)):
 
@@ -44,11 +43,9 @@ You can fetch a list of HYF repositories through this API endpoint ([What is an 
 https://api.github.com/orgs/HackYourFuture/repos?per_page=100
 ```
 
-If you open this URL in the browser (_try it!_) you will receive JSON data about the available HYF repositories. This is the data that you will need to work with in this assignment.
+> Note the `?per_page=100` at the end of the above URL. That's a [query string](https://en.wikipedia.org/wiki/Query_string). In short, it *passes additional information to its request to the API*, through its url, rather than the request body. This particular query string tells the API we want to see `100` results `per_page`. The GitHub API [understands this](https://developer.github.com/v3/guides/traversing-with-pagination/#changing-the-number-of-items-received). We'll see query strings in more detail when we talk about REST later on in the course.
 
-<small>Note the query string `?per_page=100` in the above URL. If you don't specify this query string you will only get the first 30 repositories (the default `per_page` is 30). HackYourFuture has more than 30 repositories but less than 100.</small>
-
-The returned JSON data contains some basic information about each repository, such as `name`, `full_name`, `description` etc. There are also many properties that contain URLs that can be used to obtain detail information about certain aspects of the repository.
+If you open this URL in the browser (_try it!_) you will receive JSON data about the available HYF repositories. Don't be overwhelmed - it's a lot, and you won't need 99% of it! The interesting properties are for instance `name`, `full_name`, `description` etc. There are also many properties that contain URLs that can be used to obtain detailed information about certain aspects of the repository - for now we can ignore 99% of this data.
 
 #### 1.2.2 Get contributor information for a repository
 
