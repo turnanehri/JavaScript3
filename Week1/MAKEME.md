@@ -75,9 +75,10 @@ You will be working on the same application during the next three weeks. For eac
 
 # Instructions
 
-## Part 1 (by Wednesday): set-up & calling the API
+## Part 1 - <small>Set-up your environment</small>
+**Deadline: Wednesday**
 
-1. Fork our class' fork of the JavaScript3 repository to your own GitHub account. Yes, you'll be creating a fork of a fork of a fork:
+- [ ] Fork our class' fork of the JavaScript3 repository to your own GitHub account. Yes, you'll be creating a fork of a fork of a fork:
 
    ```
    - Main HYF Javascript 3 repository: https://github.com/HackYourFuture/JavaScript3
@@ -86,130 +87,39 @@ You will be working on the same application during the next three weeks. For eac
          - Your fork here.
    ```
 
-2. Clone the fork to your laptop.
-3. Open the newly created `JavaScript3` folder from the cloned repository in VSCode.
-4. Install the following extension in VSCode: [**ESLint**](https://eslint.org/) and [**EditorConfig for VS Code**](https://editorconfig.org/). Please learn what these are about!
+- [ ] Clone the fork to your laptop.
+- [ ] Open the newly created `JavaScript3` folder from the cloned repository in VS Code.
+- [ ] Install the [**ESLint**](https://eslint.org/) extension in VS Code. This extension will highlight and inform you of any violations of the style guide, and allow you to auto-fix a lot of issues. You should probably also already install the [**EditorConfig for VS Code**](https://editorconfig.org/) plugin. Although it's not required in our case because we all use the same editor, it will come in handy when you work on public projects in the future.
 
-5. Open a Terminal window in VSCode and type the following command to install Prettier and ESLint tools as required for the homework:
+- [ ] Open a Terminal window in VS Code or elsewhere, and **from the main JavaScript3 folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
 
    ```
    npm install
    ```
 
-6. Create a new branch for the week 1 homework with the following command:
+- [ ] Create a new branch for the week 1 homework with the following command:
 
    ```
    git checkout -b week1
    ```
 
-### 1.5 Code Overview
+## Part 2 - <small>Call the API</small>
+**Deadline: Wednesday**
 
-The files that make up the application are located in the `homework` folder. It contains the following files:
+You'll create your application inside the `homework` folder. It already has 3 basic, but completely empty files ready: an html, a css and an index file.
 
-| Filename             | Description                       |
-| -------------------- | --------------------------------- |
-| ~~`App.js`~~         | Not used in week 1 and 2.         |
-| ~~`Contributor.js`~~ | Not used in week 1 and 2.         |
-| `hyf.png`            | Contains the HackYourFuture logo. |
-| `index.html`         | The application's HTML file.      |
-| ~~`index2.html`~~    | Not used in week 1 and 2.         |
-| `index.js`           | A starter JavaScript file.        |
-| ~~`Repository.js`~~  | Not used in week 1 and 2.         |
-| `style.css`          | A starter CSS file.               |
-| ~~`Util.js`~~        | Not used in week 1 and 2.         |
+- [ ] Your first task is to create the basic content for these files. Reference the css and javascript files in the correct way. Give your application a nice title.
 
-In week 1, you should only modify `index.js` and `style.css`.
+- [ ] Write the javascript code that, as soon as the page loads, fetches the HYF repositories.
 
-_**Do not modify any other files at this time!**_
+  > *Hints*:
+  > - How do you execute codeas soon as the page loads?
+  > - How do we handle the *response* of the call?
+  > - How do we then *interpret* the body of the response?
 
-Although you should only modify files in the `homework` folder, we recommend that you always open the `JavaScript3` folder rather than directly opening the `homework` folder in VSCode. The `JavaScript3` folder contains the actual git repository and the configuration files required by the installed tools.
+- [ ] Log the names of the returned repositories to the console; one next to the other.
 
-_**Do not change or delete any files outside of the `homework` folder!**_
-
-#### 1.5.1 A first examination
-
-1. Open `index.html` and examine its contents (but don't modify anything). Notice that the HTML `body` looks like this:
-
-   ```html
-   <body>
-     <div id="root"></div>
-     <script src="./index.js"></script>
-   </body>
-   ```
-
-   The `body` tag contains a single `div` to which you will need to dynamically append HTML elements through your JavaScript code in `index.js`.
-
-2. Open `index.js`. This file contains a starter set of code for you to expand. It contains the following three functions:
-
-   | Function          | Description                                                                                                  |
-   | ----------------- | ------------------------------------------------------------------------------------------------------------ |
-   | `fetchJSON`       | Uses `XMLHttpRequest` to fetch JSON data from an API end point. This function uses an asynchronous callback. |
-   | `createAndAppend` | A utility function for easily creating and appending HTML elements.                                          |
-   | `main`            | Contains the start-up code for the application.                                                              |
-
-   `index.js` also contains a constant with the URL for the HYF repositories as listed in section 2.2.1:
-
-   ```js
-   const HYF_REPOS_URL = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
-   ```
-
-3. Open the `index.html` file in your browser. Notice that it produces the same JSON output that you saw previously when you opened the URL directly in the browser.
-
-4. Review the `main()` function in `index.js` and examine how this code renders the JSON output in the browser by means of a `pre` HTML element (for demonstration purposes).
-
-### 1.6 Week 1 Assignment
-
-The assignment is to produce an application similar to the one illustrated in Figure 1 above.
-
-It should include the following components:
-
-1. An HTML `select` element from which the user can select a HYF repository. This `select` element must be populated with `option` elements, one for each HYF repository.
-2. A left-hand column that displays basic information about the selected repository.
-3. A right-hand column that displays a list of contributors to the repository.
-
-   > In case you run out of time, you can also do the contributors list in week 2.
-
-**Functional Requirements:**
-
-1. The list of repositories in the `select` element should be sorted (case-insensitive) on repository name.
-2. At start-up your application should display information about the first repository as displayed in the `select` element.
-3. When the user changes the selection, the information in the web page should be refreshed for the newly selected repository.
-4. You should be able to click on the repository name of the selected repository to open a new browser tab with the GitHub page for that repository.
-5. You should be able to click on a contributor to open a new browser tab with the GitHub page for that contributor.
-6. You should render network errors to the DOM (see Figure 2 below for an example). Do not use `console.log` as regular users will not see the console output.
-7. Your UI should be responsive. Try it with Chrome Developer Tools in the browser, using a mobile phone format and a tablet format, portrait and landscape. If necessary, you can also do this work in week 2.
-
-![Error rendering](./assets/hyf-github-error.png)
-
-<small>Figure 2. Rendering of network errors.</small>
-
-**Code modifications:**
-
-**`index.js`**
-
-- Add new functions and modify function `main()` as you see fit. It is not likely that you will need to modify `fetchJSON()` and `createAndAppend()`.
-
-**`style.css`**
-
-- Add your own styling.
-
-**Hints:**
-
-- Add one `option` element per repository to the `select` element, where each `option` element has the array index of the repository as its `value` attribute and the name of the repository as its text content:
-
-  ```html
-  <select>
-    <option value="0">alumni</option>
-    <option value="1">angular</option>
-    <!-- etc -->
-  </select>
-  ```
-
-* To sort the list repositories use [`.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) and [`.localeCompare()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare).
-
-* Use CSS media queries and [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) to make the UI responsive.
-
-* To force a `404` network error so that you can test the rendering of errors, change the URL to make an invalid GitHub request, e.g. append an `x` to `orgs`: `orgsx`.
+  > *Hint*: map.
 
 ### 1.7 Handing in your homework
 
