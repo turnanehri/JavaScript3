@@ -10,7 +10,7 @@ Because we're actually going to build an entire application, this homework is mo
 
 Over the coming weeks, we are going to write an application that uses the [GitHub API](https://developer.github.com/guides/getting-started/).
 
-This application should display information about the available [HYF GitHub repositories](https://github.com/hackyourfuture). Eventually, this will be the functionalities:
+This application should display information about the available [HYF GitHub repositories](https://github.com/hackyourfuture). Eventually, it should have this functionality:
 
 - The user should be able to select a repository from a list of available repositories.
 - The application should display high-level information about the selected repository and show a list of its contributors.
@@ -158,4 +158,8 @@ If the answer is 'yes' to the preceding questions you are ready to follow these 
    git push -u origin week1
    ```
 
-- [ ] Create a pull request for your `week1` branch against our class' (Rob's) fork.
+- [ ] Create a pull request (PR) for your `week1` branch against our class' (Rob's) fork `master` branch.
+
+- [ ] Keep an eye on your notifications: if there are issues with your homework, we'll add comments to your PR. If we don't add comments, that means you've done an excellent job - or we dind't find the time to review it :(.
+
+- [ ] You can always amend your homework by pushing more commits to your branch - they'll be included in the pull request. Do this to resolve any remarks we gave in the comments!
