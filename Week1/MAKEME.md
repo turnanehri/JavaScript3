@@ -83,7 +83,7 @@ You will be working on the same application during the next three weeks. For eac
 
   > *Reminder*: A fork is like your own copy of a repository, under your own account, of someone else's repository. Read everything about forking and being social on GitHub [here](https://help.github.com/en/articles/fork-a-repo).
   >
-  > We use forks so that we can later on create [Pull Requests](https://help.github.com/en/articles/about-pull-requests). In short, a pull request (PR) is a way to ask the original owner of a repository (where you forked off from) to merge a change that you did on a branch of your local repository, into the original repository.
+  > We use forks so that you can later on create [Pull Requests](https://help.github.com/en/articles/about-pull-requests). In short, a pull request (PR) is a way to ask the original owner of a repository (where you forked off from) to merge a change that you did on a branch of your local repository, into the original repository.
   >
   > A big advantage of PR's is that it allows to **compare code** and **give feedback** directly on the code! This is very handy when reviewing homework!
 
@@ -193,8 +193,14 @@ If the answer is 'yes' to the preceding questions you are ready to follow these 
   git push -u origin week1
   ```
 
+  This will give you a link that you can follow to immediately create a pull request (see next step).
+
 - [ ] Create a pull request (PR) for your `week1` branch against our class' (Rob's) fork `master` branch.
 
-- [ ] Keep an eye on your notifications: if there are issues with your homework, we'll add comments to your PR. If we don't add comments, that means you've done an excellent job - or we dind't find the time to review it :(.
+  ![Create PR in GitHub](./assets/create_pr.png)
 
-- [ ] You can always amend your homework by pushing more commits to your branch - they'll be included in the pull request. Do this to resolve any remarks we gave in the comments!
+- [ ] Keep an eye on your notifications: if there are issues with your homework, your coach will add comments to your PR. If they don't add comments, that means you've done an excellent job - or they dind't find the time to review it :(.
+
+  Note that of course the coach will never actually *merge* your PR.
+
+- [ ] You can always amend your homework by pushing more commits to your branch - they'll be included in the pull request automatically, and your coach will be notified. Do this to resolve any remarks your coach gave in the comments!
