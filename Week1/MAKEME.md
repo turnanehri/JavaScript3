@@ -85,6 +85,18 @@ You will be working on the same application during the next three weeks. For eac
 
 - [ ] Open the newly created `JavaScript3` folder from the cloned repository in VS Code *(always open this entire main folder!)*
 
+- [ ] Open a Terminal window in VS Code or elsewhere, and **from the main JavaScript3 folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
+
+   ```
+   npm install
+   ```
+
+- [ ] Create a new branch for the week 1 homework with the following command:
+
+   ```
+   git checkout -b week1
+   ```
+   
 - [ ] Install the [**ESLint**](https://eslint.org/) extension in VS Code. This extension will highlight and inform you of any violations of the style guide, and allow you to auto-fix a lot of issues. You should probably also already install the [**EditorConfig for VS Code**](https://editorconfig.org/) plugin. Although it's not required in our case because we all use the same editor, it will come in handy when you work on public projects in the future.
 
   **Installing ESLint**:
@@ -98,19 +110,6 @@ You will be working on the same application during the next three weeks. For eac
   **Auto-fix issues**: Press `ctrl+shift+p`, type `eslint` and choose 'Fix all auto-fixable Problems'. You may have to do this a few times.
 
   ![Inspecting ESLint issues](./assets/eslint_autofix.png)
-
-
-- [ ] Open a Terminal window in VS Code or elsewhere, and **from the main JavaScript3 folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
-
-   ```
-   npm install
-   ```
-
-- [ ] Create a new branch for the week 1 homework with the following command:
-
-   ```
-   git checkout -b week1
-   ```
 
 ## Part 2 - <small>Call the API</small>
 **Deadline: Wednesday evening**
