@@ -72,30 +72,51 @@ You will be working on the same application during the next three weeks. For eac
 ## Part 1 - <small>Set-up your environment</small>
 **Deadline: Wednesday evening**
 
-- [ ] Fork our class' fork of the JavaScript3 repository to your own GitHub account. Yes, you'll be creating a fork of a fork of a fork:
+- [ ] [Fork](https://help.github.com/en/articles/fork-a-repo) our class' fork of the JavaScript3 repository to your own GitHub account. Yes, you'll be creating a fork of a fork of a fork:
 
-   ```
-   - Main HYF Javascript 3 repository: https://github.com/HackYourFuture/JavaScript3
-     - Belgium HYF fork: https://github.com/HackYourFutureBelgium/JavaScript3
-       - Our class' (Rob's) fork: https://github.com/segersrobbert/JavaScript3
-         - Your fork here.
-   ```
+  ```
+  - Main HYF Javascript 3 repository: https://github.com/HackYourFuture/JavaScript3
+    - Belgium HYF fork: https://github.com/HackYourFutureBelgium/JavaScript3
+      - Our class' (Rob's) fork: https://github.com/segersrobbert/JavaScript3
+        - Your fork here.
+  ```
 
-- [ ] Clone the fork to your laptop.
+  > *Reminder*: A fork is like your own copy of a repository, under your own account, of someone else's repository. Read everything about forking and being social on GitHub [here](https://help.github.com/en/articles/fork-a-repo).
+  >
+  > We use forks so that we can later on create [Pull Requests](https://help.github.com/en/articles/about-pull-requests). In short, a pull request (PR) is a way to ask the original owner of a repository (where you forked off from) to merge a change that you did on a branch of your local repository, into the original repository.
+  >
+  > A big advantage of PR's is that it allows to **compare code** and **give feedback** directly on the code! This is very handy when reviewing homework!
+
+- [ ] [Clone](https://help.github.com/en/articles/fork-a-repo#step-2-create-a-local-clone-of-your-fork) the fork to your laptop.
 
 - [ ] Open the newly created `JavaScript3` folder from the cloned repository in VS Code *(always open this entire main folder!)*
+  
+  > *Tip*: a command line, you can open a folder in VS Code by typing:
+  >
+  > ```
+  > code .
+  > ```
 
-- [ ] Open a Terminal window in VS Code or elsewhere, and **from the main JavaScript3 folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
+- [ ] Open a Terminal window in VS Code or in your favorite terminal (like [cmder](https://cmder.net/) or [mingw32](https://gitforwindows.org/)), and **from the main `JavaScript3` folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
 
-   ```
-   npm install
-   ```
+  ```
+  npm install
+  ```
+  
+  This should output something like this. If not, contact your coach on Slack!
+
+  ```
+  $ npm install
+  npm WARN hyf-js3-homework@1.0.0 No repository field.
+
+  added 188 packages in 19.38s
+  ```
 
 - [ ] Create a new branch for the week 1 homework with the following command:
 
-   ```
-   git checkout -b week1
-   ```
+  ```
+  git checkout -b week1
+  ```
    
 - [ ] Install the [**ESLint**](https://eslint.org/) extension in VS Code. This extension will highlight and inform you of any violations of the style guide, and allow you to auto-fix a lot of issues. You should probably also already install the [**EditorConfig for VS Code**](https://editorconfig.org/) plugin. Although it's not required in our case because we all use the same editor, it will come in handy when you work on public projects in the future.
 
@@ -168,9 +189,9 @@ If the answer is 'yes' to the preceding questions you are ready to follow these 
 
 - [ ] Push your `week1` branch to GitHub:
 
-   ```
-   git push -u origin week1
-   ```
+  ```
+  git push -u origin week1
+  ```
 
 - [ ] Create a pull request (PR) for your `week1` branch against our class' (Rob's) fork `master` branch.
 
