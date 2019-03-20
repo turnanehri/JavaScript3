@@ -198,6 +198,8 @@ If the answer is 'yes' to the preceding questions you are ready to follow these 
 - [ ] Create a pull request (PR) for your `week1` branch against our class' (Rob's) fork `master` branch.
 
   ![Create PR in GitHub](./assets/create_pr.png)
+  
+  > *Heads up!* Pay close attention to the values in the dropdown lists! Be sure to select `segersrobbert/JavaScript3` as the 'base repository', `master` as the 'base branch', and on the right-hand side, select your fork as the 'head repository' and `week1` (or whatever your homework branch is called) as the 'compare' branch.
 
 - [ ] Keep an eye on your notifications: if there are issues with your homework, your coach will add comments to your PR. If they don't add comments, that means you've done an excellent job - or they dind't find the time to review it :(.
 
