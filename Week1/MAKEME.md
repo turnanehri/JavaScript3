@@ -150,6 +150,8 @@ You'll create your application inside the `homework` subfolder of the main `Java
 
   > *Hint*: map.
 
+- [ ] Hand in this first part of your homework. See at the end of this guide for instructions.
+
 ## Part 3 - <small>Select list, repo details</small>
 **Deadline: Friday evening**
 
@@ -166,6 +168,8 @@ You'll create your application inside the `homework` subfolder of the main `Java
   > - How to convert a [ISO 8601](https://nl.wikipedia.org/wiki/ISO_8601) date string into a JavaScript `Date` (we haven't seen this yet, so Google!), and then format it as a human-readable *locale date string* and *locale time string*?
 
   > We know: creating HTML and modifying the DOM 'manually' is tedious and cumbersome. Later on in your HYF journey, in the [React module](https://github.com/HackYourFuture/React), you'll be modifying the DOM in a much easier and more fun way!
+
+- [ ] That's it for now, time to hand in again!
 
 # Handing in your homework
 
@@ -198,7 +202,7 @@ If the answer is 'yes' to the preceding questions you are ready to follow these 
 - [ ] Create a pull request (PR) for your `week1` branch against our class' (Rob's) fork `master` branch.
 
   ![Create PR in GitHub](./assets/create_pr.png)
-  
+
   > *Heads up!* Pay close attention to the values in the dropdown lists! Be sure to select `segersrobbert/JavaScript3` as the 'base repository', `master` as the 'base branch', and on the right-hand side, select your fork as the 'head repository' and `week1` (or whatever your homework branch is called) as the 'compare' branch.
 
 - [ ] Keep an eye on your notifications: if there are issues with your homework, your coach will add comments to your PR. If they don't add comments, that means you've done an excellent job - or they dind't find the time to review it :(.
