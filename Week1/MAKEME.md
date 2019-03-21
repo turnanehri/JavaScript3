@@ -157,7 +157,7 @@ You'll create your application inside the `homework` subfolder of the main `Java
 
 - [ ] As in the example, in your application's header, create and populate a `<select>` list with all the repository's names.
 
-  > *Hint*: map again.
+  > *Hint*: `map`, `forEach`, `HTMLSelectElement.add()`
 
 - [ ] When the user selects a repository, display its details, nicely formatted. Display at least its name, a description, its number of forks, and when it was last updated, nicely formatted. Bonus points for nice icons. Even more bonus points for a conditional, dynamic nice icon for one of its properties, like `has_wiki`. Or be even more creative. Everything's possible.
 
