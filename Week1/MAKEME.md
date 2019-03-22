@@ -90,14 +90,8 @@ You will be working on the same application during the next three weeks. For eac
 - [ ] [Clone](https://help.github.com/en/articles/fork-a-repo#step-2-create-a-local-clone-of-your-fork) the fork to your laptop.
 
 - [ ] Open the newly created `JavaScript3` folder from the cloned repository in VS Code *(always open this entire main folder!)*
-  
-  > *Tip*: a command line, you can open a folder in VS Code by typing:
-  >
-  > ```
-  > code .
-  > ```
 
-- [ ] Open a Terminal window in VS Code or in your favorite terminal (like [cmder](https://cmder.net/) or [mingw32](https://gitforwindows.org/)), and **from the main `JavaScript3` folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
+- [ ] Open a Terminal window in VS Code or in your favorite terminal (for Windows users: [cmder](https://cmder.net/) or [mingw32](https://gitforwindows.org/)), and **from the main `JavaScript3` folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
 
   ```
   npm install
