@@ -64,7 +64,7 @@ You will be working on the same application during the next three weeks. For eac
 | Week | Branch  | Assignment |
 | ---- | ------- | ---------- |
 |  1   | `week1` | - Part 1 & 2, by Wednesday: Setup environment, fetch the HYF repositories and log their display names to the console.<br/>- Part 3, by Friday: Populate a `<select>` list with the repository names; allow the user to pick one, and display some of its details, like in the example. |
-|  2   | `week2` | Based on the `week1` branch:<br>- When a repository is selected, also load the contributors. Display a loading indicator while loading.<br>- Style the UI, and make it responsive.|
+|  2   | `week2` | Based on the `week1` branch:<br>- When a repository is selected, also load the contributors. Display a loading indicator while loading.<br>- Properly handle and display errors.<br>- Style the UI, and make it responsive.|
 |  3   | `week3` | Based on the `week2` branch:<br>- Refactor the application to use ES6 Classes and async/await.<br>- Make the app ARIA-compliant.<br />- Marvel at your first application. |
 
 # Instructions
