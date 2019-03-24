@@ -1,17 +1,10 @@
 # Homework Week 2
 
-```
-Topics discussed this week:
-• Async vs Sync
-• Event Loop (order of execution)
-• Promises
-```
+## Part 1 <small>- Reading material</small>
 
-## Step 1: Read
+- [ ] Read this article on scopes & closures: [Explaining javascript scope and closures](https://robertnyman.com/2008/10/09/explaining-javascript-scope-and-closures/)
 
-- Read this article on scopes & closures: [explaining-javascript-scope-and-closures](https://robertnyman.com/2008/10/09/explaining-javascript-scope-and-closures/)
-
-- If you are still not completely clear on promises, here are some additional resources :ring:
+- [ ] If you are still not completely clear on promises, here are some additional resources:
 
   - [Google's post about Promises](https://developers.google.com/web/fundamentals/getting-started/primers/promises)
   - [A nice article from David Walsh](https://davidwalsh.name/promises)
@@ -19,35 +12,57 @@ Topics discussed this week:
   - [stackoverflow](http://stackoverflow.com/questions/13343340/calling-an-asynchronous-function-within-a-for-loop-in-javascript)
   - YouTube: [promises](https://www.youtube.com/watch?v=WBupia9oidU)
 
-## Step 2: Implement requested PR changes
+## Part 2 <small>- Finish last week's homework</small>
+**Deadline: Tuesday evening**
 
-- Fix Requested Changes (if any) on the Pull Request.
+This week's homework builds upon last week's homework. So if you haven't already, finish last week's homework first, by following the [complete guide](../week1/MAKEME.md), step-by-step. If you want some intermediate comments/review after finishing that, go a head and already send it in with a pull request, as described there. Or you may immediately add this week's work.
 
-## Step 3: Convert callbacks to promises
+## Part 3 <small>- Setup for this week</small>
+**Deadline: Thursday evening**
 
-**_Deadline Thursday_**
+Create a new branch based on the `week1` branch:
 
-### 3.1 Preparation
-
-The homework for week 2 will build on the work you did in week 1. You will create a new branch based on the `week1` branch.
-
-1. Make sure that you committed all changes in the week 1 version of your homework.
-2. Create a new `week2` branch:
+- [ ] Make sure that you committed all changes in the week 1 version of your homework.
+- [ ] Create a new `week2` branch:
 
    ```
    git checkout -b week2
    ```
 
-### 3.2 Assignment
+## Part 4 <small>- This week's assignment</small>
+**Deadline: Tursday evening**
 
-You will continue to work on the files `index.js` and (possibly) `style.css`.
+You will continue to work on the files `index.js` and (possibly) `main.css`.
 
-- Complete your GitHub app code from the previous week, if needed, to meet the requirements from that week's assignment.
-- Replace all asynchronous callbacks (e.g. as used with XMLHttpRequest) by ES6 promises.
-- Beautify your app's styling.
-- If not yet completed in week 1, make your app responsive (use CSS media queries and [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)).
+- [ ] Upon selecting a repository, also load that repository's list of **contributers**, and display it, at least using the contributor's profile picture, name, and amout of repositories.
+  > *Hint*: As we saw last week, the link to the repo's contributors is a property of a repo.
 
-### 3.3 Handing in your homework
+- [ ] Clicking on the user should open this user's GitHub home page in a new tab.
+  > *Hint*: `_target`
+
+- [ ] When loading the repositories initially, and when loading the contributors after selecting a repo: display a 'loading' text or 'spinner'. Remove it once the data is loaded and displayed (or when an error occurs).
+
+- [ ] When any error occurs - either when [fetching](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) the repos or when loading contributers, clearly display a nice error message somewhere on the page.
+  > *Hints*:
+  >
+  >- `fetch` will not `reject` on a 404; not even on a 500; it will actually *succeed* (resolve). You have to check the result's `status` to see whether its response has a statuscode in the 200-range.
+  >
+  >   Give it a try - this will actually log the success!
+  >
+  >   ```
+  >   fetch('this-isnt-even-a-proper-url')
+  >     .then((resp) => console.log('success', resp))
+  >     .catch((err) => console.error('error', err));
+  >   ```
+  >   `fetch` will only *reject* when there is really a network error, like when you're offline.
+  >- You can re-use a function you pass as callback to `then`!
+  >- Test this by changing your fetch urls, or even by deconnecting your internet. You can simulate this in the DevTools, in the Network tab:
+  >  ![Simulate offline](assets/simulate_offline.png)
+
+- [ ] If not yet completed in week 1, make your app responsive. Use CSS media queries and [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)).
+
+## Part 5 <small>- Handing in your homework</small>
+**Deadline: Thursday evening**
 
 If necessary, review the instructions how to [Hand in homework](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/homework_pr.md) using GitHub pull request.
 
@@ -79,7 +94,3 @@ Note:
 
 1. Please remove all redundant, commented-out code and console.log's from your files before pushing your homework as finished. There is no need for your mentors to review this stuff.
 2. Please make sure your code is well-formatted and follows the recommended naming conventions.
-
-## Step 4: Read before next lecture
-
-Go through the reading material in the [README.md](../Week3/README.md) to prepare for your next class.
