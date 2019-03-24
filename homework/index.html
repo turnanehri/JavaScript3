@@ -3,7 +3,6 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>HYF GitHub Repo Browser</title>
   <link rel="stylesheet" href="./main.css">
@@ -13,7 +12,9 @@
   <div id="root">
     <header class="header">
       <p>HYF Repositories</p>
-      <select class="repo-selector"></select>
+      <select id="repo-select" class="repo-selector">
+        <option>Please choose a repo</option>
+      </select>
     </header>
     <div id="container">
       <div class="left-div whiteframe repo-properties">
