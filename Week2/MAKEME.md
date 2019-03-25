@@ -38,7 +38,7 @@ You will continue to work on the files `index.js` and (possibly) `main.css`.
   > *Hint*: As we saw last week, the link to the repo's contributors is a property of a repo.
 
 - [ ] Clicking on the user should open this user's GitHub home page in a new tab.
-  > *Hint*: `_target`
+  > *Hint*: `target`
 
 - [ ] When loading the repositories initially, and when loading the contributors after selecting a repo: display a 'loading' text or 'spinner'. Remove it once the data is loaded and displayed (or when an error occurs).
   > *Hint*: In Chrome DevTools, in the Network tab, you can simulate a 'Slow 3G' connection to test your loading text/spinner.
