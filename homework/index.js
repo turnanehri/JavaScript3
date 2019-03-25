@@ -1,5 +1,7 @@
+const REPOSITORIES_URL = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
+
 let repositories;
-const selectList = document.getElementById('repo-select');
+const repoSelectElement = document.getElementById('repo-select');
 
 function populateSelectList() {
   repositories
@@ -7,17 +9,17 @@ function populateSelectList() {
       const optionElement = document.createElement('option');
       optionElement.text = r.name;
       optionElement.value = r.name;
-      selectList.add(optionElement);
+      repoSelectElement.add(optionElement);
     });
 }
 
-function selectIndex(index) {
-  selectList.selectedIndex = (index + 1);
-}
-
 function showSelectedRepoDetails() {
-  const selectedIndex = selectList.selectedIndex - 1;
+  // Account for the first 'Please choose...' option
+  const selectedIndex = repoSelectElement.selectedIndex - 1;
+  if (selectedIndex < 0) return; // Don't do anything upon selecting the 'Please choose...' option
+
   const selectedRepo = repositories[selectedIndex];
+
   document.getElementById('repo-name').innerHTML = selectedRepo.name;
   document.getElementById('repo-description').innerHTML = selectedRepo.description;
   document.getElementById('repo-forks').innerHTML = selectedRepo.forks;
@@ -30,15 +32,14 @@ function showSelectedRepoDetails() {
 }
 
 window.onload = () => {
-  fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
+  fetch(REPOSITORIES_URL)
     .then(response => response.json())
     .then((data) => {
       repositories = data;
 
       populateSelectList();
-      selectIndex(0);
       showSelectedRepoDetails();
     });
 };
 
-selectList.onchange = showSelectedRepoDetails;
+repoSelectElement.onchange = showSelectedRepoDetails;

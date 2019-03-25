@@ -1,14 +1,21 @@
 body {
-    width: 768px;
-    margin-left: auto;
-    margin-right: auto;
     background-color: #f8f8f8;
     font-family: 'Roboto', sans-serif;
     color: rgb(0, 0, 0, 87%);
-    margin-top: 0;
+    margin: 0;
 }
 
-#container {
+label {
+    font-weight: bold;
+}
+
+.container {
+    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -18,10 +25,16 @@ body {
     body {
         width: 100%;
     }
-    #container {
+
+    #main {
         margin: 0;
         flex-direction: column;
         align-items: stretch;
+        width: 100%;
+    }
+    
+    .left-div {
+        margin: 0 12px!important ;
     }
 }
 
@@ -59,12 +72,6 @@ h4 {
 .left-div {
     padding: 16px;
     margin-right: 16px;
-}
-
-@media (max-width: 767px) {
-    .left-div {
-        margin: 0;
-    }
 }
 
 .contributor-list {
@@ -120,25 +127,6 @@ h4 {
     background-color: gray;
     color: white;
     border-radius: 4px;
-}
-
-table {
-    table-layout: fixed;
-    color: rgb(0, 0, 0, 81%);
-}
-
-td {
-    vertical-align: top;
-}
-
-td:first-child {
-    width: 100px;
-    min-width: 100px;
-    max-width: 100px;
-}
-
-td.label {
-    font-weight: bold;
 }
 
 .whiteframe {

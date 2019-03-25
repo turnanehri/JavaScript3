@@ -11,20 +11,22 @@
 <body>
   <div id="root">
     <header class="header">
-      <p>HYF Repositories</p>
-      <select id="repo-select" class="repo-selector">
-        <option>Please choose a repo</option>
-      </select>
+      <div class="container">
+        HYF Repositories
+        <select id="repo-select" class="repo-selector">
+          <option>Please choose a repository</option>
+        </select>
+      </div>
     </header>
-    <div id="container">
+    <div id="main" class="container">
       <div class="left-div whiteframe repo-properties">
         <div><label>Repository:</label> <span id="repo-name"></span></div>
         <div><label>Description:</label> <span id="repo-description"></span></div>
         <div><label>Forks:</label> <span id="repo-forks"></span></div>
         <div><label>Updated:</label> <span id="repo-updated"></span></div>
       </div>
-      <div class="right-div whiteframe">
-        <p class="contributor-header">Contributions</p>
+      <div class="right-div whiteframe" style="visibility: hidden">
+        <p class="contributor-header">Contributors</p>
       </div>
     </div>
   </div>
