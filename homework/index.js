@@ -3,49 +3,55 @@ const REPOSITORIES_URL = 'https://api.github.com/orgs/HackYourFuture/repos?per_p
 let repositories;
 const repoSelectElement = document.getElementById('repo-select');
 const contributorListElement = document.getElementById('contributor-list');
-const contributorDivElement = document.getElementById('contributor-div');
 const contributorsLoadingDivElement = document.getElementById('loading-contributors');
 const errorElement = document.getElementById('error');
+const errorDetailElement = document.getElementById('error-detail');
 
 function populateSelectList() {
-  repositories
-    .forEach((r) => {
-      const optionElement = document.createElement('option');
-      optionElement.text = r.name;
-      optionElement.value = r.name;
-      repoSelectElement.add(optionElement);
-    });
+  repositories.forEach((r) => {
+    const optionElement = document.createElement('option');
+    optionElement.text = r.name;
+    optionElement.value = r.name;
+    repoSelectElement.add(optionElement);
+  });
 }
 
 function showLoadingContributorsIndicator(loading) {
-  contributorDivElement.style.visibility = loading ? 'hidden' : 'visible';
-  contributorsLoadingDivElement.style.visibility = loading ? 'visible' : 'hidden';
+  contributorsLoadingDivElement.style.display = loading ? 'block' : 'none';
 }
 
 function populateContributorList(contributors) {
   contributors.forEach((contributor) => {
     const liElement = document.createElement('li');
     liElement.innerHTML = `
-    <a href=${contributor.html_url} target="_blank">
-      <img class="contributor-avatar" src="${contributor.avatar_url}" />
-      <span>${contributor.login}</span>
-    </a>
-    `;
+      <a class="contributor-item" href=${contributor.html_url} target="_blank">
+        <img src="${contributor.avatar_url}" class="contributor-avatar">
+        <span>${contributor.login}</span>
+        <span class="contributor-badge">${contributor.contributions}</span>
+      </a>`;
 
     contributorListElement.appendChild(liElement);
   });
 }
 
-function showError(show) {
-  errorElement.style.display = show ? 'block' : 'none';
+function displayError(error) {
+  // The 'error' parameter can either be a boolean-like, or the error detail msg to display
+  errorElement.style.display = error ? 'block' : 'none';
+  errorDetailElement.innerText = error;
+
+  // eslint-disable-next-line no-console
+  console.error(error);
 }
 
 function loadContributors(selectedRepo) {
+  contributorListElement.innerHTML = ''; // Clear the contents of the ul completely
+  displayError(false);
   showLoadingContributorsIndicator(true);
+
   fetch(selectedRepo.contributors_url)
     .then(response => response.json())
     .then(populateContributorList)
-    .catch(() => showError(true))
+    .catch(displayError)
     .finally(() => showLoadingContributorsIndicator(false));
 }
 

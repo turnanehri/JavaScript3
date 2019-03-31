@@ -19,7 +19,7 @@
       </div>
     </header>
     <div class="alert alert-error" id="error" style="display: none">
-      Something went wrong!
+      <strong>Something went wrong!</strong> <span id="error-detail"></span>
     </div>
     <div id="main" class="container">
       <div class="left-div whiteframe repo-properties">
@@ -28,10 +28,10 @@
         <div><label>Forks:</label> <span id="repo-forks"></span></div>
         <div><label>Updated:</label> <span id="repo-updated"></span></div>
       </div>
-      <div id="loading-contributors" style="visibility: hidden">Loading...</div>
-      <div id="contributor-div" class="right-div whiteframe" style="visibility: hidden">
+      <div id="contributor-div" class="right-div whiteframe">
         <p class="contributor-header">Contributors</p>
-        <ul id="contributor-list">
+        <p id="loading-contributors" class="loading-indicator" style="display: none">Loading...</p>
+        <ul id="contributor-list" class="contributor-list">
 
         </ul>
       </div>
