@@ -110,6 +110,7 @@ h4 {
 .contributor-avatar {
     border-radius: 3px;
     margin-right: 16px;
+    width: 48px;
 }
 
 .contributor-data {

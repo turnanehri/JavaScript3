@@ -2,6 +2,9 @@ const REPOSITORIES_URL = 'https://api.github.com/orgs/HackYourFuture/repos?per_p
 
 let repositories;
 const repoSelectElement = document.getElementById('repo-select');
+const contributorListElement = document.getElementById('contributor-list');
+const contributorDivElement = document.getElementById('contributor-div');
+const contributorsLoadingDivElement = document.getElementById('loading-contributors');
 
 function populateSelectList() {
   repositories
@@ -11,6 +14,33 @@ function populateSelectList() {
       optionElement.value = r.name;
       repoSelectElement.add(optionElement);
     });
+}
+
+function showLoadingContributorsIndicator(loading) {
+  contributorDivElement.style.visibility = loading ? 'hidden' : 'visible';
+  contributorsLoadingDivElement.style.visibility = loading ? 'visible' : 'hidden';
+}
+
+function populateContributorList(contributors) {
+  showLoadingContributorsIndicator(false);
+  contributors.forEach((contributor) => {
+    const liElement = document.createElement('li');
+    liElement.innerHTML = `
+    <a href=${contributor.html_url} target="_blank">
+      <img class="contributor-avatar" src="${contributor.avatar_url}" />
+      <span>${contributor.login}</span>
+    </a>
+    `;
+
+    contributorListElement.appendChild(liElement);
+  });
+}
+
+function loadContributors(selectedRepo) {
+  showLoadingContributorsIndicator(true);
+  fetch(selectedRepo.contributors_url)
+    .then(response => response.json())
+    .then(populateContributorList);
 }
 
 function showSelectedRepoDetails() {
@@ -29,6 +59,8 @@ function showSelectedRepoDetails() {
   const time = updateDate.toLocaleTimeString();
 
   document.getElementById('repo-updated').innerHTML = `${date} ${time}`;
+
+  loadContributors(selectedRepo);
 }
 
 window.onload = () => {
