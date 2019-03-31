@@ -5,6 +5,7 @@ const repoSelectElement = document.getElementById('repo-select');
 const contributorListElement = document.getElementById('contributor-list');
 const contributorDivElement = document.getElementById('contributor-div');
 const contributorsLoadingDivElement = document.getElementById('loading-contributors');
+const errorElement = document.getElementById('error');
 
 function populateSelectList() {
   repositories
@@ -22,7 +23,6 @@ function showLoadingContributorsIndicator(loading) {
 }
 
 function populateContributorList(contributors) {
-  showLoadingContributorsIndicator(false);
   contributors.forEach((contributor) => {
     const liElement = document.createElement('li');
     liElement.innerHTML = `
@@ -36,11 +36,17 @@ function populateContributorList(contributors) {
   });
 }
 
+function showError(show) {
+  errorElement.style.display = show ? 'block' : 'none';
+}
+
 function loadContributors(selectedRepo) {
   showLoadingContributorsIndicator(true);
   fetch(selectedRepo.contributors_url)
     .then(response => response.json())
-    .then(populateContributorList);
+    .then(populateContributorList)
+    .catch(() => showError(true))
+    .finally(() => showLoadingContributorsIndicator(false));
 }
 
 function showSelectedRepoDetails() {
