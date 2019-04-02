@@ -69,8 +69,7 @@ function displayError(error) {
   errorElement.style.display = error ? 'block' : 'none';
   errorDetailElement.innerText = error;
 
-  // eslint-disable-next-line no-console
-  if (error) console.error(error);
+  if (error) throw error;
 }
 
 async function loadContributors(selectedRepo) {
