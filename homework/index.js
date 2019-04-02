@@ -7,6 +7,27 @@ const contributorsLoadingDivElement = document.getElementById('loading-contribut
 const errorElement = document.getElementById('error');
 const errorDetailElement = document.getElementById('error-detail');
 
+class Contributor {
+  constructor(htmlUrl, avatarUrl, login, contributions) {
+    this.htmlUrl = htmlUrl;
+    this.avatarUrl = avatarUrl;
+    this.login = login;
+    this.contributions = contributions;
+  }
+
+  render() {
+    const liElement = document.createElement('li');
+    liElement.innerHTML = `
+      <a class="contributor-item" href=${this.htmlUrl} target="_blank">
+        <img src="${this.avatarUrl}" class="contributor-avatar">
+        <span>${this.login}</span>
+        <span class="contributor-badge">${this.contributions}</span>
+      </a>`;
+
+    return liElement;
+  }
+}
+
 class Repository {
   constructor(name, description, forks, updatedAt, contributorsUrl) {
     this.name = name;
@@ -25,7 +46,8 @@ class Repository {
 
   async getContributors() {
     const response = await fetch(this.contributorsUrl);
-    return response.json();
+    const data = await response.json();
+    return data.map(c => new Contributor(c.html_url, c.avatar_url, c.login, c.contributions));
   }
 }
 
@@ -40,20 +62,6 @@ function populateSelectList() {
 
 function showLoadingContributorsIndicator(loading) {
   contributorsLoadingDivElement.style.display = loading ? 'block' : 'none';
-}
-
-function populateContributorList(contributors) {
-  contributors.forEach((contributor) => {
-    const liElement = document.createElement('li');
-    liElement.innerHTML = `
-      <a class="contributor-item" href=${contributor.html_url} target="_blank">
-        <img src="${contributor.avatar_url}" class="contributor-avatar">
-        <span>${contributor.login}</span>
-        <span class="contributor-badge">${contributor.contributions}</span>
-      </a>`;
-
-    contributorListElement.appendChild(liElement);
-  });
 }
 
 function displayError(error) {
@@ -72,7 +80,9 @@ async function loadContributors(selectedRepo) {
 
   try {
     const contributors = await selectedRepo.getContributors();
-    populateContributorList(contributors);
+    contributors.forEach((contributor) => {
+      contributorListElement.appendChild(contributor.render());
+    });
   } catch (err) {
     displayError(err);
   } finally {
