@@ -31,7 +31,7 @@ class Contributor {
 class Repository {
   constructor(name, description, forks, updatedAt, contributorsUrl) {
     this.name = name;
-    this.descrption = description;
+    this.description = description;
     this.forks = forks;
     this.updateDate = new Date(updatedAt);
     this.contributorsUrl = contributorsUrl;
@@ -101,11 +101,15 @@ function showSelectedRepoDetails() {
 }
 
 window.onload = async () => {
-  const response = await fetch(REPOSITORIES_URL);
-  const data = await response.json();
-  repositories = data.map(d => new Repository(
-    d.name, d.description, d.forks, d.updated_at, d.contributors_url,
-  ));
+  try {
+    const response = await fetch(REPOSITORIES_URL);
+    const data = await response.json();
+    repositories = data.map(d => new Repository(
+      d.name, d.description, d.forks, d.updated_at, d.contributors_url,
+    ));
+  } catch (err) {
+    displayError(err);
+  }
 
   populateSelectList();
   showSelectedRepoDetails();
