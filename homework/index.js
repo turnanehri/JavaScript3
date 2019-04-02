@@ -43,16 +43,20 @@ function displayError(error) {
   console.error(error);
 }
 
-function loadContributors(selectedRepo) {
+async function loadContributors(selectedRepo) {
   contributorListElement.innerHTML = ''; // Clear the contents of the ul completely
   displayError(false);
   showLoadingContributorsIndicator(true);
 
-  fetch(selectedRepo.contributors_url)
-    .then(response => response.json())
-    .then(populateContributorList)
-    .catch(displayError)
-    .finally(() => showLoadingContributorsIndicator(false));
+  try {
+    const response = await fetch(selectedRepo.contributors_url);
+    const contributors = await response.json();
+    populateContributorList(contributors);
+  } catch (err) {
+    displayError(err);
+  } finally {
+    showLoadingContributorsIndicator(false);
+  }
 }
 
 function showSelectedRepoDetails() {
@@ -75,15 +79,13 @@ function showSelectedRepoDetails() {
   loadContributors(selectedRepo);
 }
 
-window.onload = () => {
-  fetch(REPOSITORIES_URL)
-    .then(response => response.json())
-    .then((data) => {
-      repositories = data;
+window.onload = async () => {
+  const response = await fetch(REPOSITORIES_URL);
+  const data = await response.json();
+  repositories = data;
 
-      populateSelectList();
-      showSelectedRepoDetails();
-    });
+  populateSelectList();
+  showSelectedRepoDetails();
 };
 
 repoSelectElement.onchange = showSelectedRepoDetails;
