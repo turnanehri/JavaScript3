@@ -40,7 +40,7 @@ function displayError(error) {
   errorDetailElement.innerText = error;
 
   // eslint-disable-next-line no-console
-  console.error(error);
+  if (error) console.error(error);
 }
 
 async function loadContributors(selectedRepo) {
