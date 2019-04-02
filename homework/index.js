@@ -7,6 +7,28 @@ const contributorsLoadingDivElement = document.getElementById('loading-contribut
 const errorElement = document.getElementById('error');
 const errorDetailElement = document.getElementById('error-detail');
 
+class Repository {
+  constructor(name, description, forks, updatedAt, contributorsUrl) {
+    this.name = name;
+    this.descrption = description;
+    this.forks = forks;
+    this.updateDate = new Date(updatedAt);
+    this.contributorsUrl = contributorsUrl;
+  }
+
+  getFormattedUpdateDate() {
+    const date = this.updateDate.toLocaleDateString();
+    const time = this.updateDate.toLocaleTimeString();
+
+    return `${date} ${time}`;
+  }
+
+  async getContributors() {
+    const response = await fetch(this.contributorsUrl);
+    return response.json();
+  }
+}
+
 function populateSelectList() {
   repositories.forEach((r) => {
     const optionElement = document.createElement('option');
@@ -49,8 +71,7 @@ async function loadContributors(selectedRepo) {
   showLoadingContributorsIndicator(true);
 
   try {
-    const response = await fetch(selectedRepo.contributors_url);
-    const contributors = await response.json();
+    const contributors = await selectedRepo.getContributors();
     populateContributorList(contributors);
   } catch (err) {
     displayError(err);
@@ -69,12 +90,7 @@ function showSelectedRepoDetails() {
   document.getElementById('repo-name').innerHTML = selectedRepo.name;
   document.getElementById('repo-description').innerHTML = selectedRepo.description;
   document.getElementById('repo-forks').innerHTML = selectedRepo.forks;
-
-  const updateDate = new Date(selectedRepo.updated_at);
-  const date = updateDate.toLocaleDateString();
-  const time = updateDate.toLocaleTimeString();
-
-  document.getElementById('repo-updated').innerHTML = `${date} ${time}`;
+  document.getElementById('repo-updated').innerHTML = selectedRepo.getFormattedUpdateDate();
 
   loadContributors(selectedRepo);
 }
@@ -82,7 +98,9 @@ function showSelectedRepoDetails() {
 window.onload = async () => {
   const response = await fetch(REPOSITORIES_URL);
   const data = await response.json();
-  repositories = data;
+  repositories = data.map(d => new Repository(
+    d.name, d.description, d.forks, d.updated_at, d.contributors_url,
+  ));
 
   populateSelectList();
   showSelectedRepoDetails();
