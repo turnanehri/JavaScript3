@@ -107,12 +107,12 @@ window.onload = async () => {
     repositories = data.map(d => new Repository(
       d.name, d.description, d.forks, d.updated_at, d.contributors_url,
     ));
+
+    populateSelectList();
+    showSelectedRepoDetails();
   } catch (err) {
     displayError(err);
   }
-
-  populateSelectList();
-  showSelectedRepoDetails();
 };
 
 repoSelectElement.onchange = showSelectedRepoDetails;
