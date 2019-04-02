@@ -90,11 +90,7 @@ async function loadContributors(selectedRepo) {
 }
 
 function showSelectedRepoDetails() {
-  // Account for the first 'Please choose...' option
-  const selectedIndex = repoSelectElement.selectedIndex - 1;
-  if (selectedIndex < 0) return; // Don't do anything upon selecting the 'Please choose...' option
-
-  const selectedRepo = repositories[selectedIndex];
+  const selectedRepo = repositories[repoSelectElement.selectedIndex];
 
   document.getElementById('repo-name').innerHTML = selectedRepo.name;
   document.getElementById('repo-description').innerHTML = selectedRepo.description;
